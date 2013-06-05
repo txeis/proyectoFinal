@@ -9,9 +9,8 @@ package project3;
  * @author Alumno
  */
 public class Nomina {
-    private double bruto=0, neto=0, irpf=0, irpfHijos=0, extra=0, brutoMirpf=0;
-    
-    private int hMes=40, dinCat;
+    private float bruto=0, neto=0, irpf=0, irpfHijos=0, extra=0, brutoMirpf=0, dinCat=0;
+    private int hMes=40;
     private String mesL, mesN;
     
     private BaseDatos con;
@@ -52,24 +51,24 @@ public class Nomina {
     
     public  void calculoIRPF(){
         if(getBruto()<600){
-            setIrpf(getBruto() * 0.01);
+            setIrpf(bruto * 0.01);
         }
         else if(getBruto()>=600 && getBruto()<=1200){
-            setIrpf(getBruto() * 0.15);
+            setIrpf(bruto * 0.15);
         }
         else{
-            setIrpf(getBruto() * 0.25);
+            setIrpf(bruto * 0.25);
         }
         int numHijos=getEmp().getnHij();
         if(numHijos>0){
-            setIrpf(getIrpf() - (getIrpf() * 0.04));
+            setIrpf(irpf - (irpf * 0.04));
         }
         setIrpf(((int) (getIrpf() * 100)) / 100); //dejamos dos decimales
-        setBrutoMirpf(getBruto() - getIrpf());
+        setBrutoMirpf(bruto - irpf);
     }
     public void pagasExtraordinarias(){
         if(mes==6 || mes==12){
-            setExtra(getBrutoMirpf());
+            setExtra(brutoMirpf);
         }
         if(mes==9){
             int numHijos=emp.getnHij();
@@ -79,7 +78,7 @@ public class Nomina {
         }       
     }
     public void calculoNeto(){
-        setNeto(getBrutoMirpf() + getExtra());
+        setNeto(bruto + extra);
     }
      //ponemos nombre del mes en vez de numero
     public String muestraMes()
@@ -173,70 +172,70 @@ public class Nomina {
     /**
      * @return the bruto
      */
-    public double getBruto() {
+    public float getBruto() {
         return bruto;
     }
 
     /**
      * @param bruto the bruto to set
      */
-    public void setBruto(double bruto) {
+    public void setBruto(float bruto) {
         this.bruto = bruto;
     }
 
     /**
      * @return the neto
      */
-    public double getNeto() {
+    public float getNeto() {
         return neto;
     }
 
     /**
      * @param neto the neto to set
      */
-    public void setNeto(double neto) {
+    public void setNeto(float neto) {
         this.neto = neto;
     }
 
     /**
      * @return the irpf
      */
-    public double getIrpf() {
+    public float getIrpf() {
         return irpf;
     }
 
     /**
      * @param irpf the irpf to set
      */
-    public void setIrpf(double irpf) {
+    public void setIrpf(float irpf) {
         this.irpf = irpf;
     }
 
     /**
      * @return the irpfHijos
      */
-    public double getIrpfHijos() {
+    public float getIrpfHijos() {
         return irpfHijos;
     }
 
     /**
      * @param irpfHijos the irpfHijos to set
      */
-    public void setIrpfHijos(double irpfHijos) {
+    public void setIrpfHijos(float irpfHijos) {
         this.irpfHijos = irpfHijos;
     }
 
     /**
      * @return the extra
      */
-    public double getExtra() {
+    public float getExtra() {
         return extra;
     }
 
     /**
      * @param extra the extra to set
      */
-    public void setExtra(double extra) {
+    public void setExtra(float extra) {
         this.extra = extra;
     }
 
@@ -271,28 +270,28 @@ public class Nomina {
     /**
      * @return the brutoMirpf
      */
-    public double getBrutoMirpf() {
+    public float getBrutoMirpf() {
         return brutoMirpf;
     }
 
     /**
      * @param brutoMirpf the brutoMirpf to set
      */
-    public void setBrutoMirpf(double brutoMirpf) {
+    public void setBrutoMirpf(float brutoMirpf) {
         this.brutoMirpf = brutoMirpf;
     }
 
     /**
      * @return the dinCat
      */
-    public int getDinCat() {
+    public float getDinCat() {
         return dinCat;
     }
 
     /**
      * @param dinCat the dinCat to set
      */
-    public void setDinCat(int dinCat) {
+    public void setDinCat(float dinCat) {
         this.dinCat = dinCat;
     }
 

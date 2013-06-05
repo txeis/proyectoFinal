@@ -139,11 +139,12 @@ public class BaseDatos{
         }
         return 0;
     }
-    public int dineroCat(String cat){
+    public float dineroCat(String cat){
         try{
             rs=st.executeQuery("Select sueldoBase from categoria where codigo LIKE '"+cat+"';");
             if(rs.next()){
-                int dinCat=rs.getInt(1);
+                float dinCat=(rs.getFloat(1));
+                System.out.println(dinCat);
                 return dinCat;
             }
         }
